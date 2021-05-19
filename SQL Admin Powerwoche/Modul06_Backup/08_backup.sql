@@ -79,7 +79,7 @@ ca solange wie die TX bei ersten mal brauchten
 	T
 	T
 	T
-!	 D
+!	 
 !	T
 !	T
 !	T
@@ -257,6 +257,24 @@ CREATE DATABASE [KursDBX] ON
 ( FILENAME = N'D:\_HRDB\KursDBX.mdf' )
  FOR ATTACH
 GO
+
+CREATE DATABASE SN_Northwind1157 ON
+( NAME = Northwind,
+  FILENAME = 'D:\_SQLDB\SN_Northwind1157.mdf' ) -- Pfad und Dateiname der neuen DB Datei des Snapshot
+AS SNAPSHOT OF northwind;
+GO
+
+
+--Restore der Northwind aus dem Snapshot... nur die geänderten Seiten zurückspielen
+
+1: geh auf die master (weder auf dem Snapshot noch auf der zu restor. DB
+
+2:
+
+restore database northwind from database_snapshot = 'SN_Northwind1157'
+
+
+
 
 
 
