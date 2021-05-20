@@ -51,6 +51,8 @@ DB haben Dateien:
 I U D --> .ldf.. erst später in die .mdf
 S   --> aus mdf lesen
 
+Eigtl sollte jede DB der Logik folgen: Trenne Daten von Log
+
 
 Ziel: wi wollen das Schreiben nicht stören...
 

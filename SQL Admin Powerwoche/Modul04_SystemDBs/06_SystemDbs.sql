@@ -49,7 +49,19 @@ Muss man die tempdb sichern?
 Nein.. macht 0,0 Sinn
 
 
+Eigtl sollte die tempdb eig HDDs besitzen.. 
+Trenne Daten von Log
 
+
+Vergib der tempdb soviele Dateien wie Kerne , aber max 8
+
+die TempDb bekommt ab SQL 2016 T1117 + T1118
+T1117 alle DAteien bleiben gleich groß, auch wenn nur eine autom wächst
+T1118 Uniform Extents statt gemischten Blöcken
+
+HDD0 1 3  5  7
+
+HDD1 2 4  6   8
 
 
 --------------
