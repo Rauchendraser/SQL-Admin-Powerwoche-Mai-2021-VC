@@ -1,0 +1,48 @@
+--Wer hat die Daten gelesen
+
+/*
+1. LogDatei
+USE [master]
+
+GO
+
+CREATE SERVER AUDIT [SecurityAudit]
+TO FILE 
+(	FILEPATH = N'D:\_BACKUP'
+	,MAXSIZE = 0 MB
+	,MAX_ROLLOVER_FILES = 2147483647
+	,RESERVE_DISK_SPACE = OFF
+) WITH (QUEUE_DELAY = 1000, ON_FAILURE = CONTINUE)
+
+GO
+
+2. Server überwachen 
+USE [master]
+GO
+
+CREATE SERVER AUDIT SPECIFICATION [ServerSecurityAudit]
+FOR SERVER AUDIT [SecurityAudit]
+ADD (FAILED_LOGIN_GROUP),
+ADD (SUCCESSFUL_LOGIN_GROUP),
+ADD (LOGIN_CHANGE_PASSWORD_GROUP)
+WITH (STATE = OFF)
+GO
+
+
+
+3. DB überwachen
+
+USE [Northwind]
+
+GO
+
+CREATE DATABASE AUDIT SPECIFICATION [NwindSecurityAudit]
+FOR SERVER AUDIT [SecurityAudit]
+ADD (SELECT ON SCHEMA::[IT] BY [MAX])
+
+GO
+
+
+
+
+*/
